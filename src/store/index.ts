@@ -4,7 +4,7 @@ import userReducer from './slices/userSlice';
 import postReducer from './slices/postSlice';
 import reportReducer from './slices/reportSlice';
 import dashboardReducer from './slices/dashboardSlice';
-import { mockMiddleware } from './mockMiddleware';
+// import { mockMiddleware } from './mockMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +14,9 @@ export const store = configureStore({
     reports: reportReducer,
     dashboard: dashboardReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(mockMiddleware),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(mockMiddleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware(),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

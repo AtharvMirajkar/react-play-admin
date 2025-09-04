@@ -12,7 +12,13 @@ interface StatsCardProps {
   };
 }
 
-const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon: Icon, color, trend }) => {
+const StatsCard: React.FC<StatsCardProps> = ({
+  title,
+  value,
+  icon: Icon,
+  color,
+  trend,
+}) => {
   const colorClasses = {
     blue: 'bg-blue-500',
     green: 'bg-green-500',
@@ -33,19 +39,26 @@ const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon: Icon, color, 
         <div>
           <p className="text-gray-600 text-sm font-medium">{title}</p>
           <p className="text-3xl font-bold text-gray-900 mt-2">
-            {value.toLocaleString()}
+            {value?.toLocaleString()}
           </p>
           {trend && (
-            <div className={`flex items-center mt-2 text-sm ${
-              trend.isPositive ? 'text-green-600' : 'text-red-600'
-            }`}>
-              <span>{trend.isPositive ? '+' : ''}{trend.value}%</span>
+            <div
+              className={`flex items-center mt-2 text-sm ${
+                trend.isPositive ? 'text-green-600' : 'text-red-600'
+              }`}
+            >
+              <span>
+                {trend.isPositive ? '+' : ''}
+                {trend.value}%
+              </span>
               <span className="text-gray-500 ml-1">from last month</span>
             </div>
           )}
         </div>
-        
-        <div className={`w-12 h-12 ${bgColorClasses[color]} rounded-lg flex items-center justify-center`}>
+
+        <div
+          className={`w-12 h-12 ${bgColorClasses[color]} rounded-lg flex items-center justify-center`}
+        >
           <Icon size={24} className={colorClasses[color]} />
         </div>
       </div>
