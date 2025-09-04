@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Layout from './components/Layout/Layout';
@@ -11,6 +16,7 @@ import PostList from './components/Posts/PostList';
 import PostDetail from './components/Posts/PostDetail';
 import ReportList from './components/Reports/ReportList';
 import ProtectedRoute from './components/ProtectedRoute';
+import ToastContainer from './components/Toast/ToastContainer';
 
 function App() {
   return (
@@ -18,12 +24,15 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<LoginForm />} />
-          
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }>
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Dashboard />} />
             <Route path="users" element={<UserList />} />
             <Route path="users/:userId" element={<UserProfile />} />
@@ -31,9 +40,10 @@ function App() {
             <Route path="posts/:postId" element={<PostDetail />} />
             <Route path="reports" element={<ReportList />} />
           </Route>
-          
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <ToastContainer />
       </Router>
     </Provider>
   );

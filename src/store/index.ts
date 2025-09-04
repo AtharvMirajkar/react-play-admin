@@ -4,6 +4,7 @@ import userReducer from './slices/userSlice';
 import postReducer from './slices/postSlice';
 import reportReducer from './slices/reportSlice';
 import dashboardReducer from './slices/dashboardSlice';
+import toastReducer from './slices/toastSlice';
 // import { mockMiddleware } from './mockMiddleware';
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     posts: postReducer,
     reports: reportReducer,
     dashboard: dashboardReducer,
+    toast: toastReducer,
   },
   // middleware: (getDefaultMiddleware) =>
   //   getDefaultMiddleware().concat(mockMiddleware),
